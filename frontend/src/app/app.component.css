@@ -42,6 +42,54 @@ h1 {
         "Segoe UI Symbol";
 }
 
+.card{
+    --angle: 0deg;
+    padding: 100px 0;
+    width: min-content;
+    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="18" viewBox="0 0 100 18"%3E%3Cpath fill="%239C92AC" fill-opacity="0.4" d="M61.82 18c3.47-1.45 6.86-3.78 11.3-7.34C78 6.76 80.34 5.1 83.87 3.42 88.56 1.16 93.75 0 100 0v6.16C98.76 6.05 97.43 6 96 6c-9.59 0-14.23 2.23-23.13 9.34-1.28 1.03-2.39 1.9-3.4 2.66h-7.65zm-23.64 0H22.52c-1-.76-2.1-1.63-3.4-2.66C11.57 9.3 7.08 6.78 0 6.16V0c6.25 0 11.44 1.16 16.14 3.42 3.53 1.7 5.87 3.35 10.73 7.24 4.45 3.56 7.84 5.9 11.31 7.34zM61.82 0h7.66a39.57 39.57 0 0 1-7.34 4.58C57.44 6.84 52.25 8 46 8S34.56 6.84 29.86 4.58A39.57 39.57 0 0 1 22.52 0h15.66C41.65 1.44 45.21 2 50 2c4.8 0 8.35-.56 11.82-2z"%3E%3C/path%3E%3C/svg%3E'), conic-gradient(from var(--angle),
+            hsl(0, 100%, 50%),
+            hsl(10, 100%, 50%),
+            hsl(20, 100%, 50%),
+            hsl(30, 100%, 50%),
+            hsl(40, 100%, 50%),
+            hsl(50, 100%, 50%),
+            hsl(60, 100%, 50%),
+            hsl(70, 100%, 50%),
+            hsl(80, 100%, 50%),
+            hsl(90, 100%, 50%),
+            hsl(100, 100%, 50%),
+            hsl(110, 100%, 50%),
+            hsl(120, 100%, 50%),
+            hsl(130, 100%, 50%),
+            hsl(140, 100%, 50%),
+            hsl(150, 100%, 50%),
+            hsl(160, 100%, 50%),
+            hsl(170, 100%, 50%),
+            hsl(180, 100%, 50%),
+            hsl(190, 100%, 50%),
+            hsl(200, 100%, 50%),
+            hsl(210, 100%, 50%),
+            hsl(220, 100%, 50%),
+            hsl(230, 100%, 50%),
+            hsl(240, 100%, 50%),
+            hsl(250, 100%, 50%),
+            hsl(260, 100%, 50%),
+            hsl(270, 100%, 50%),
+            hsl(280, 100%, 50%),
+            hsl(290, 100%, 50%),
+            hsl(300, 100%, 50%),
+            hsl(310, 100%, 50%),
+            hsl(320, 100%, 50%),
+            hsl(330, 100%, 50%),
+            hsl(340, 100%, 50%),
+            hsl(350, 100%, 50%),
+            hsl(360, 100%, 50%));
+    opacity: 0.7;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
 p {
     margin: 0;
     color: var(--gray-700);
@@ -58,7 +106,7 @@ main {
     position: relative;
 }
 
-.angular-logo {
+.project-logo {
     max-width: 9.2rem;
 }
 
@@ -78,88 +126,36 @@ main {
     margin-top: 1.5rem;
 }
 
-.divider {
-    width: 1px;
-    background: var(--red-to-pink-to-purple-vertical-gradient);
-    margin-inline: 0.5rem;
-}
+.image-container {
+    position: relative;
+    overflow: hidden;
+    width: 300px; /* Ajuste conforme necessário */
+    height: 200px; /* Ajuste conforme necessário */
+  }
 
-.pill-group {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-}
+  /* Estilo para a imagem */
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-.pill {
-    display: flex;
-    align-items: center;
-    --pill-accent: var(--bright-blue);
-    background: color-mix(in srgb, var(--pill-accent) 5%, transparent);
-    color: var(--pill-accent);
-    padding-inline: 0.75rem;
-    padding-block: 0.375rem;
-    border-radius: 2.75rem;
-    border: 0;
-    transition: background 0.3s ease;
-    font-family: var(--inter-font);
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.4rem;
-    letter-spacing: -0.00875rem;
-    text-decoration: none;
-}
+  /* Adiciona um degradê transparente em todos os lados */
+  .image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    pointer-events: none; /* Permite interação com a imagem subjacente */
+  }
 
-.pill:hover {
-    background: color-mix(in srgb, var(--pill-accent) 15%, transparent);
-}
-
-.pill-group .pill:nth-child(6n + 1) {
-    --pill-accent: var(--bright-blue);
-}
-
-.pill-group .pill:nth-child(6n + 2) {
-    --pill-accent: var(--french-violet);
-}
-
-.pill-group .pill:nth-child(6n + 3),
-.pill-group .pill:nth-child(6n + 4),
-.pill-group .pill:nth-child(6n + 5) {
-    --pill-accent: var(--hot-red);
-}
-
-.pill-group svg {
-    margin-inline-start: 0.25rem;
-}
-
-.social-links {
-    display: flex;
-    align-items: center;
-    gap: 0.73rem;
-    margin-top: 1.5rem;
-}
-
-.social-links path {
-    transition: fill 0.3s ease;
-    fill: var(--gray-400);
-}
-
-.social-links a:hover svg path {
-    fill: var(--gray-900);
-}
 
 @media screen and (max-width: 650px) {
     .content {
         flex-direction: column;
         width: max-content;
-    }
-
-    .divider {
-        height: 1px;
-        width: 100%;
-        background: var(--red-to-pink-to-purple-horizontal-gradient);
-        margin-block: 1.5rem;
     }
 }

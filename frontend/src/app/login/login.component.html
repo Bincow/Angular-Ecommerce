@@ -1,1 +1,28 @@
-<p>login works!</p>
+<div>
+    <form class="example-form">
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+            @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Por favor, coloque um email válido</mat-error>
+            }
+            @if (emailFormControl.hasError('required')) {
+            <mat-error>Email é <strong>obrigatório</strong></mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input type="password" matInput [formControl]="emailFormControl" placeholder="Ex. chico123">
+        </mat-form-field>
+
+        <span>Esqueci minha senha?</span>
+
+        <div>
+            <button mat-raised-button color="accent">Accent</button>
+            <span>Não possui um Conta, <b>Crie Agora</b>?</span>
+        </div>
+
+    </form>
+</div>
