@@ -1,3 +1,5 @@
+import { PurchaseProduct } from "./purchase-product";
+
 enum PaymentType {
     CreditCard = 0,
     DebitCard = 1,
@@ -14,17 +16,13 @@ enum PurchaseSituation {
     Error = 5
 }
   
-class Purchase {
-    constructor(
-        public id: number,
-        public userId: number,
-        public products: PurchaseProduct[],
-        public paymentType: PaymentType,
-        public situation: PurchaseSituation,
-        public totalValue: number,
-        public address: string
-    ) {}
+export interface Purchase {
+    id: number,
+    userId: number,
+    products: PurchaseProduct[],
+    paymentType: PaymentType,
+    situation: PurchaseSituation,
+    totalValue: number,
+    address: string
 }
-
-export default Purchase;
 

@@ -4,13 +4,11 @@ enum UserType {
     Client = 1,
 }
   
-class User {
-    constructor(
-        public id: number,
-        public login: string,
-        public password: string,
-        public type: UserType
-    ) {}
+export interface User {
+    id: number,
+    login: string,
+    password: string,
+    type: UserType
 }
 
 export default User;

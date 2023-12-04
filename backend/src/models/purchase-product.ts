@@ -1,7 +1,5 @@
-class PurchaseProduct {
-    constructor(
-        public purchaseId: number,
-        public productId: number,
-        public quantity: number
-    ) {}
+export interface PurchaseProduct {
+    purchaseId: number,
+    productId: number,
+    quantity: number
 }
