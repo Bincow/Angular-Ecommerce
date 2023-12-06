@@ -17,8 +17,8 @@ enum PurchaseSituation {
 }
   
 export interface Purchase {
-    id: number,
-    userId: number,
+    id: string,
+    userId: string,
     products: PurchaseProduct[],
     paymentType: PaymentType,
     situation: PurchaseSituation,

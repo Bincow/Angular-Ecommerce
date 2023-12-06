@@ -1,5 +1,5 @@
 export interface PurchaseProduct {
-    purchaseId: number,
-    productId: number,
+    purchaseId: string,
+    productId: string,
     quantity: number
 }

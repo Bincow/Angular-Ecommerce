@@ -1,10 +1,10 @@
 import { JsonBase } from './../../models/jsonBase';
 import User from "../../models/user"
 
-export interface IGetUsersController{
+export interface IUsersController{
     handle():Promise<JsonBase>
 }
 
-export interface IGetUsersRepository{
+export interface IUsersRepository{
     getUsers():Promise<User[]>
 }
