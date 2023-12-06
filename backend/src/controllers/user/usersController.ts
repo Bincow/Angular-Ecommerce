@@ -1,8 +1,10 @@
+import User from '../../models/user';
+import { HttpResponse } from '../protocols';
 import { IUsersController, IUsersRepository } from './protocols';
 export class UsersController implements IUsersController{
     constructor(private readonly getUsersRepository:IUsersRepository){}
 
-    async handle() {
+    async handle():Promise<HttpResponse<User[]>> {
         try
         {
             const users = await this.getUsersRepository.getUsers();

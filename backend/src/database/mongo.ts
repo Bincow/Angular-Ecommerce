@@ -10,7 +10,7 @@ export const MongoClient = {
         const password = process.env.MONGO_PASS;
         
         const client = new Mongo(url, { auth:{username, password}});
-        const data = client.db("users-db");
+        const data = client.db("angularcommerce-db");
 
         this.client = client;
         this.db = data;

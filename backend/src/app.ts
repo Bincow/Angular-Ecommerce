@@ -16,6 +16,7 @@ const main = async () => {
     const port = process.env.PORT || 3001;
 
     await MongoClient.connect();
+    app.use(express.json())
 
     app.get("/user", async(req, res) => {
         const userRepository = new MongoUserRepository;
@@ -29,6 +30,15 @@ const main = async () => {
         const productRepository = new MongoProductRepository;
         const productController = new ProductsController(productRepository);
         const {body, statusCode} = await productController.handle();
+        res.send(body).status(statusCode);
+        }
+    );
+    app.post("/product", async(req, res) => {
+        const productRepository = new MongoProductRepository;
+        const productController = new ProductsController(productRepository);
+        const {body, statusCode} = await productController.insertProduct({
+            body: req.body
+        });
         res.send(body).status(statusCode);
         }
     );

@@ -1,8 +1,8 @@
-import { JsonBase } from './../../models/jsonBase';
 import User from "../../models/user"
+import { HttpResponse } from "../protocols"
 
 export interface IUsersController{
-    handle():Promise<JsonBase>
+    handle():Promise<HttpResponse<User[]>>
 }
 
 export interface IUsersRepository{
