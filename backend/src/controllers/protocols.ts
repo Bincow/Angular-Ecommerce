@@ -1,6 +1,9 @@
+import { ApiResponse } from "../utils/apiMessages";
+import { ExError } from "../utils/errorMessages";
+
 export interface HttpResponse<T>{
     statusCode: number;
-    body: T | string; 
+    body: ApiResponse<T>; 
 }
 
 export interface HttpRequest<T>{

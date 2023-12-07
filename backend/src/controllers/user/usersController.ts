@@ -1,4 +1,6 @@
 import User from '../../models/user';
+import { ApiInfoMsg, ApiResponse } from '../../utils/apiMessages';
+import { ErrorMsg } from '../../utils/errorMessages';
 import { HttpResponse } from '../protocols';
 import { IUsersController, IUsersRepository } from './protocols';
 export class UsersController implements IUsersController{
@@ -11,12 +13,12 @@ export class UsersController implements IUsersController{
 
             return {
                 statusCode: 200,
-                body:users
+                body: new ApiResponse(true, ApiInfoMsg.default, users)
             }
         }catch(Error){
             return {
                 statusCode: 400,
-                body:"deu merda"
+                body: new ApiResponse(true, ErrorMsg.default)
             }
         }
     }
