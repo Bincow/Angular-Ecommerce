@@ -50,6 +50,7 @@ export class MongoProductRepository implements IProductsRepository{
         const { _id, ...rest } = product;
         return { id: _id.toHexString(), ...rest}
     }
+    
     async deleteProduct(params: DeleteProductParams): Promise<Product> {
         const {id} = params;
         

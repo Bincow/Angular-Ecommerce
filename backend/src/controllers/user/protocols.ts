@@ -6,5 +6,5 @@ export interface IUsersController{
 }
 
 export interface IUsersRepository{
-    getUserByLogin(params: Promise<GetUserByLoginParams>): Promise<User>;
+    getUserByLogin(params: GetUserByLoginParams): Promise<User>;
 }

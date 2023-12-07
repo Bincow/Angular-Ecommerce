@@ -1,5 +1,5 @@
 import { ApiInfoMsg, ApiResponse } from "../utils/apiMessages";
-import { ExError } from "../utils/errorMessages";
+import { ErrorMsg, ExError } from "../utils/errorMessages";
 
 export interface HttpResponse<T>{
     statusCode: number;
@@ -13,5 +13,5 @@ export interface HttpRequest<T>{
 }
 
 export function baseError<T>(message?: string): HttpResponse<T> {
-    return { statusCode: 400, body: new ApiResponse(false, message ? message : ApiInfoMsg.default)};
+    return { statusCode: 400, body: new ApiResponse(false, message ? message : ErrorMsg.default)};
 }

@@ -6,7 +6,7 @@ import User, { GetUserByLoginParams } from '../../models/user';
 import bcrypt from 'bcrypt';
 
 export class MongoUserRepository implements IUsersRepository{
-    async getUserByLogin(params: Promise<GetUserByLoginParams>): Promise<User> {
+    async getUserByLogin(params: GetUserByLoginParams): Promise<User> {
         const {login, password} = await params;
         
         const user = await MongoClient.db.collection<MongoUser>(MongoCollection).findOne({ login: login });

@@ -3,6 +3,8 @@ import { DeleteProductParams, GetProductByIdParams, Product, ProductParams, Prod
 import { GetUserByLoginParams } from '../models/user';
 import { ErrorMsg } from './errorMessages';
 import bcrypt from 'bcrypt';
+import { GetPurchasesByUserIdParams, InsertPurchaseParams, PurchaseSituation, PurchaseValidated } from '../models/purchase';
+import { PurchaseProductParam } from '../models/purchase-product';
 
 export class Mapper{
     
@@ -74,7 +76,8 @@ export class Mapper{
     }
     //#endregion
 
-    static async GetUserByLoginValidator(user?: GetUserByLoginParams): Promise<GetUserByLoginParams> {
+    //#region User
+    static GetUserByLoginValidator(user?: GetUserByLoginParams): GetUserByLoginParams {
         const requiredFields = ["login", "password"];
     
         if (!user) throw new Error(ErrorMsg.EX001);
@@ -89,6 +92,37 @@ export class Mapper{
         
         return user;
     }
+    //#endregion
+
+    //#region Purchase
+    static InsertPurchaseValidator(param?: InsertPurchaseParams): { products: PurchaseProductParam[], purchaseValidated: PurchaseValidated } {
+        const requiredFields = ["userId","products","paymentType","totalValue","address"];
     
+        if (!param) throw new Error(ErrorMsg.EX001);
+    
+        for (const field of requiredFields) {
+            if (!param[field as keyof GetPurchasesByUserIdParams])
+                throw new Error(ErrorMsg.EX002.replace('{0}', field));
+        }
+       
+        const products = param.products;
+        const purchaseValidated = new PurchaseValidated(param, PurchaseSituation.Create);
+
+        return { products, purchaseValidated };
+    }
+
+    static GetPurchasesByUserIdValidator(param?: GetPurchasesByUserIdParams): GetPurchasesByUserIdParams {
+        const requiredFields = ["userId"];
+    
+        if (!param) throw new Error(ErrorMsg.EX001);
+    
+        for (const field of requiredFields) {
+            if (!param[field as keyof GetPurchasesByUserIdParams])
+                throw new Error(ErrorMsg.EX002.replace('{0}', field));
+        }
+        
+        return param;
+    }
+    //#endregion
 
 }
