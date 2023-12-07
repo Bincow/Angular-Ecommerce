@@ -1,5 +1,4 @@
 import { MongoCollection, MongoUser } from './protocols';
-
 import { ObjectId } from "mongodb";
 import { IProductsRepository } from "../../controllers/product/protocols";
 import { MongoClient } from "../../database/mongo";

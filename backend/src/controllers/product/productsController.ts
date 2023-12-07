@@ -1,7 +1,7 @@
 import { DeleteProductParams, GetProductByIdParams, Product, ProductParams, UpdateProductParams } from './../../models/product';
 import { ErrorMsg } from '../../utils/errorMessages';
 import { Mapper } from '../../utils/jsonValidators';
-import { HttpRequest, HttpResponse } from '../protocols';
+import { HttpRequest, HttpResponse, baseError } from '../protocols';
 import { IProductsController, IProductsRepository } from './protocols';
 import { ApiInfoMsg, ApiResponse } from '../../utils/apiMessages';
 
@@ -15,7 +15,7 @@ export class ProductsController implements IProductsController {
 
             return { statusCode: 200, body: new ApiResponse(true, ApiInfoMsg.default, products) };
         } catch (error) {
-            return this.baseError();
+            return baseError();
         }
     }
 
@@ -27,7 +27,7 @@ export class ProductsController implements IProductsController {
             
             return { statusCode: 200, body: new ApiResponse(true, ApiInfoMsg.default, product) };
         } catch (ex:any) {
-            return this.baseError(ex.message);
+            return baseError(ex.message);
         }
     }
 
@@ -39,7 +39,7 @@ export class ProductsController implements IProductsController {
 
             return { statusCode: 200, body: new ApiResponse(true, ApiInfoMsg.default, product) };
         } catch (ex:any) {
-            return this.baseError(ex.message);
+            return baseError(ex.message);
         }
     }
     
@@ -51,7 +51,7 @@ export class ProductsController implements IProductsController {
 
             return { statusCode: 200, body: new ApiResponse(true, ApiInfoMsg.default, product) };
         } catch (ex:any) {
-            return this.baseError(ex.message);
+            return baseError(ex.message);
         }
     }
     
@@ -63,11 +63,7 @@ export class ProductsController implements IProductsController {
 
             return { statusCode: 200, body: new ApiResponse(true, ApiInfoMsg.default, products) };
         } catch (ex:any) {
-            return this.baseError(ex.message);
+            return baseError(ex.message);
         }
-    }
-
-    baseError<T>(message?: string): HttpResponse<T> {
-        return { statusCode: 400, body: new ApiResponse(false, message ? message : ApiInfoMsg.default)};
     }
 }

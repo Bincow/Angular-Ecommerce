@@ -1,4 +1,4 @@
-import Product from "../../models/product";
+import User from "../../models/user";
 
-export const MongoCollection = 'products';
-export type MongoUser = Omit<Product, "id">;
+export const MongoCollection = 'users';
+export type MongoUser = Omit<User, "id">;

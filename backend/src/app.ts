@@ -1,7 +1,7 @@
 import express from 'express';
 import { config } from "dotenv"
 
-import { MongoUserRepository } from './repositories/users/userDatabase';
+import { MongoUserRepository } from './repositories/users/mongo-users';
 import { UsersController } from './controllers/user/usersController';
 import { MongoClient } from './database/mongo';
 import { MongoProductRepository } from './repositories/products/mongo-products';

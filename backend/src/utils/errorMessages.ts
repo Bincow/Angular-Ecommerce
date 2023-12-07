@@ -11,7 +11,7 @@ export const ErrorMsg:IErroMessages = {
     EX001: 'EX001 - O Body é nulo.',
     EX002: 'EX002 - Necessario preencher o campo: {0}',
     EX003: 'EX003 - O Preço tem que ser maior que zero',
-    EX004: 'EX004 - Nenhum campo foi selecionado para atualizar.',
+    EX004: 'EX004 - Email invalido.',
     default: 'Tente novamente mais tarde',
 };
 

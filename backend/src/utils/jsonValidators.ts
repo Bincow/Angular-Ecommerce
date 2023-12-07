@@ -1,8 +1,12 @@
+import validator from 'validator';
 import { DeleteProductParams, GetProductByIdParams, Product, ProductParams, ProductValidated, UpdateProductParams } from '../models/product';
+import { GetUserByLoginParams } from '../models/user';
 import { ErrorMsg } from './errorMessages';
+import bcrypt from 'bcrypt';
 
 export class Mapper{
     
+    //#region Product
     static ProductValidator(product?: ProductParams): ProductValidated
     {
         const requiredFields = ["name","price","quantity"]
@@ -68,5 +72,23 @@ export class Mapper{
 
         return product;
     }
+    //#endregion
+
+    static async GetUserByLoginValidator(user?: GetUserByLoginParams): Promise<GetUserByLoginParams> {
+        const requiredFields = ["login", "password"];
+    
+        if (!user) throw new Error(ErrorMsg.EX001);
+    
+        for (const field of requiredFields) {
+            if (!user[field as keyof GetUserByLoginParams])
+                throw new Error(ErrorMsg.EX002.replace('{0}', field));
+        }
+
+        if(!validator.isEmail(user.login))
+            throw new Error(ErrorMsg.EX004);
+        
+        return user;
+    }
+    
 
 }
