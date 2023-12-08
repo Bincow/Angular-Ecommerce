@@ -20,7 +20,7 @@
     top: 0
 }
 .navbar img{
-    width: 15%;
+    width: 200px;
     height: auto;
 }
 
@@ -45,10 +45,10 @@ main{
 .content{
     display: flex;
     flex-direction: column;
-
+    justify-content: space-between;
     color: white;
     padding: 2rem 3rem;
-    gap: 15rem;
+    height: 100%;
 }
 
 .smartTitle{
