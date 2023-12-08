@@ -1,41 +1,41 @@
 {
-  "hash": "0fc81406",
-  "browserHash": "35ca8ff7",
+  "hash": "71c79d53",
+  "browserHash": "cd3f1dfe",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "c3a1ceb6",
+      "fileHash": "c50bec49",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "95fca148",
+      "fileHash": "9e0beea0",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "c2380e3a",
+      "fileHash": "55d4a758",
       "needsInterop": false
     },
     "@angular/platform-browser/animations": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/animations.mjs",
       "file": "@angular_platform-browser_animations.js",
-      "fileHash": "c648fad6",
+      "fileHash": "893ced05",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "14a84d39",
+      "fileHash": "c4da0539",
       "needsInterop": false
     },
     "vanilla-tilt": {
       "src": "../../../../../node_modules/vanilla-tilt/lib/vanilla-tilt.js",
       "file": "vanilla-tilt.js",
-      "fileHash": "18b819ce",
+      "fileHash": "8ee37f77",
       "needsInterop": true
     }
   },
