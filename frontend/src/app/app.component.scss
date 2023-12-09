@@ -1,20 +1,9 @@
-:host {
+$-oneC: #0C0032;
+$twoC: #190061;
+$threeC: #240090;
+$fourC: #3500D3;
+$fiveC: #282828;
 
-    --oneC: #0C0032;
-    --twoC: #190061;
-    --threeC: #240090;
-    --fourC: #3500D3;
-    --fiveC: #282828;
-
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-        "Segoe UI Symbol";
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    
-}
 *{margin: 0;}
 .navbar {
     top: 0
@@ -25,7 +14,7 @@
 }
 
 main{
-    background-color: var(--twoC);
+    background-color: $twoC;
     width: 100%;
     height: 100%;
 
@@ -61,12 +50,19 @@ main{
 }
 
 .get-directions{
+    height: auto;
+    padding: 5px 20px;
+    background-color: $fourC;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    width: min-content;
+    cursor: pointer;
+    color: #ffffff;
 
-    .btn{
-        height: auto;
-        padding: 5px 20px;
-        background-color: var(--fourC);
-
-        border-radius: 15px;
-    }
+    &:hover {
+        background-color: darken($fourC, 10%);
+        color: #ffffff;
+      }
+    
 }
