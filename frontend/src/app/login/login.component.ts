@@ -10,7 +10,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   standalone: true,
   imports: [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.scss'
 })
 
 export class LoginComponent {
