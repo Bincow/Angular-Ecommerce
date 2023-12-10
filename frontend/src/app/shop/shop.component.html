@@ -1,1 +1,30 @@
-<p>shop works!</p>
+<app-navbar />
+<div class="shop-page">
+    <div class="shop-container">
+        <div class="shop-content">
+            @for (product of products; track product) {
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <img src="{{product.image}}" alt="">
+                        </div>
+                        <div class="card-title">
+                            <h3>{{product.name}}</h3>
+                        </div>
+                        <div class="card-actions">
+                            <div class="card-price">
+                                <p>R$ <b>{{product.price}},00</b></p>
+                                <span>Restam {{product.quantity}}un</span>
+                            </div>
+                            <div class="card-interactions">
+                                <button class="min" onclick="diminuir()">-</button>
+                                <p id="contador">2</p>
+                                <button class="sun" onclick="aumentar()">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              }
+        </div>
+    </div>
+</div>
