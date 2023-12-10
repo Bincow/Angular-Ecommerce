@@ -27,7 +27,7 @@ export class ShopComponent {
       quantity:  30,
       types:  [0,1],
       image:  null
-    }
+    },
   ] 
 
 
