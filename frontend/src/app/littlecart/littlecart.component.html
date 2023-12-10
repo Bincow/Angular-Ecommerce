@@ -1,0 +1,139 @@
+<app-navbar />
+<div class="littlecart-page">
+    <div class="littlecart-container">
+        <div class="littlecart-content">
+            <mat-stepper>
+                <mat-step class="top-stepper" label="Carrinho" state="cart">
+                    <div style="block-size: 24px;"></div>
+                    <div class="summary-cart">
+                        <div class="summarty-table">
+                            <h2>Produtos</h2>
+                            <h2>Quantidade</h2>
+                            <h2>Valor Unitario</h2>
+                            <h2>Valor Total</h2>
+                        </div>
+                        <div class="product">
+                            <div class="product-item">
+                                <div class="product-item-content">
+                                    <div class="product-image">
+                                        <img src="../../assets/banner-video.gif" alt="">
+                                    </div>
+                                    <div class="product-infos">
+                                        <p>Capinha naruto itachi vermelha</p>
+                                        <p>Modelo: IPhone 13</p>
+                                        <p>Cor: Holografica</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-quantity">
+                                <button class="min" onclick="diminuir()">-</button>
+                                <p id="contador">2</p>
+                                <button class="sun" onclick="aumentar()">+</button>
+                            </div>
+                            <div class="product-unit-value">
+                                <p>R$ 69,99</p>
+                            </div>
+                            <div class="product-total-value">
+                                <p><b>R$ 139,98</b></p>
+                            </div>
+                        </div>
+                        <div class="summary-subtotal">
+                            <div class="subtotal-title">
+                                <p>Subtotal:</p>
+                            </div>
+                            <div v>
+                                <p>R$ 139,98</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="next-section">
+                        <button class="next" mat-button matStepperNext>Proximo</button>
+                    </div>
+                </mat-step>
+
+                <mat-step label="Endereço" state="chat">
+                    <div style="block-size: 24px;"></div>
+                    <form [formGroup]="firstFormGroup">
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Nome completo</mat-label>
+                            <input matInput placeholder="Nome completo" name="nomeCompleto">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Contato</mat-label>
+                            <input matInput placeholder="Contato" name="contato">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>CEP</mat-label>
+                            <input matInput placeholder="CEP" name="cep">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Endereço</mat-label>
+                            <input matInput placeholder="Endereço" name="endereco">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Endereço 2</mat-label>
+                            <input matInput placeholder="Endereço 2" name="endereco2">
+                        </mat-form-field>
+                    </form>
+                    <div class="next-section">
+                        <button class="back" mat-button matStepperPrevious>Voltar</button>
+                        <button class="next" mat-button matStepperNext>Proximo</button>
+                    </div>
+                </mat-step>
+
+                <mat-step label="Checkout">
+                    <div style="block-size: 24px;"></div>
+                    <div>
+                        <div class="title-checkout">
+                            <h3>Metodo de pagamento</h3>
+                        </div>
+                        <mat-form-field>
+                            <mat-label>Tipo de pagamento</mat-label>
+                            <mat-select [(ngModel)]="selectedPaymentType" name="status">
+                                <mat-option *ngFor="let status of paymentTypes" [value]="status">{{ status
+                                    }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="product-checkout">
+                        <div class="title-checkout">
+                            <h3>Lista de produtos</h3>
+                        </div>
+
+                        <div class="product-checkout-content">
+                            <div class="product-image-checkout">
+                                <img src="../../assets/banner-video.gif" alt="">
+                            </div>
+                            <div class="product-infos-checkout">
+                                <p>Capinha naruto itachi vermelha</p>
+                                <p>Modelo: IPhone 13</p>
+                                <p>Cor: Holografica</p>
+                                <p>Quantidade: 2</p>
+                                <p>Preço: 139,98</p>
+                                <p class="isDiponible">Disponibilidade: <b>Disponivel</b></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-section">
+                        <button class="back" mat-button matStepperPrevious>Voltar</button>
+                        <button class="next" mat-button>Finalizar</button>
+                    </div>
+                </mat-step>
+
+                <!-- Icon overrides. -->
+                <ng-template matStepperIcon="phone">
+                    <mat-icon>call_end</mat-icon>
+                </ng-template>
+                <ng-template matStepperIcon="chat">
+                    <mat-icon>forum</mat-icon>
+                </ng-template>
+            </mat-stepper>
+        </div>
+    </div>
+</div>
