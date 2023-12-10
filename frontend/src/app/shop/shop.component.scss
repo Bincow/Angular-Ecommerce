@@ -1,0 +1,96 @@
+.shop-page {
+    margin-top: 40px;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+
+    .shop-container {
+        border-radius: 4px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        width: 95%;
+        
+        .shop-content{
+            padding: 2%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:flex-start;
+            gap: 32px;
+            background-color: aqua;
+
+            background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+.card{
+    display: flex;
+    background-color: rgb(223, 223, 223);
+    width: 320px;
+    
+    box-sizing: border-box;
+
+    .card-content{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+        .card-image{
+            width: 300px;
+            height: 170px;
+            background-color: rgb(168, 168, 168);
+        }
+
+        .card-title{
+            text-align: center;
+        }
+
+        .card-actions{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 30px;
+
+            .card-price{
+
+                p{
+                    font-size: 18px;
+                }
+                span{
+                    color: grey;
+                    font-size: 14px;
+                }
+            }
+
+            .card-interactions{
+                display: flex;
+                align-items: center;
+
+                button {
+                    background-color: white;
+                    border: 1px solid grey;
+                    padding: 10px 10px;
+                    cursor: pointer;
+                   
+                    &hover{
+                        background-color: darken(white, 30%);
+                    }
+                }
+                .min{
+                    border-radius: 5px 0px 0px 5px;
+                    border-right: none;
+                }
+                .sun{
+                    border-radius: 0px 5px 5px 0px;
+                    border-left: none;
+                }
+
+                p {
+                    border: 1px solid grey;
+                    padding: 8px 10px;
+                }
+            }
+        }
+    }
+}

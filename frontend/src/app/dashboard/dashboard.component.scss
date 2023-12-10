@@ -1,0 +1,78 @@
+$branco: #fff;
+$fundo: #292929;
+
+.dashbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $fundo;
+  color: $branco;
+  padding: 6px 48px 0px 48px;
+  height: 72px;
+  width: 100%;
+  box-sizing: border-box;
+
+  img {
+    width: 200px;
+
+  }
+
+  .person-section {
+    display: flex;
+    align-items: center;
+    
+    span {
+      font-size: .75rem;
+      line-height: 1.1428571429rem;
+      color: $branco;
+    }
+  }
+
+  .profile,
+  .cart {
+    color: $branco;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 35px;
+  }
+}
+
+.dash-page {
+  margin-top: 40px;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+
+  .dash-container {
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 95%;
+
+    .dash-content {
+      padding: 2%;
+    }
+  }
+}
+
+.table {
+  box-sizing: border-box;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  padding: 5px;
+
+  a {
+    text-decoration: none;
+    color: $fundo;
+  }
+
+  .action {
+    display: flex;
+    gap: 10px;
+
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+}
