@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTableModule} from '@angular/material/table';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatTabsModule} from '@angular/material/tabs';
+
 
 
 enum ProductType {
@@ -44,8 +41,6 @@ const ELEMENT_DATA: Product[] = [
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [CommonModule,MatIconModule,MatMenuModule,MatTableModule,MatTabsModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

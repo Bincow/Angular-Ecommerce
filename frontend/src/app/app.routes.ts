@@ -13,6 +13,6 @@ export const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'shop', component: DashboardComponent},
     {path:'', redirectTo:'home', pathMatch: 'full'},
-    {path: 'home', component: HomeComponent}
+    {path: 'home', component: HomeComponent, title: 'Home Page'}
 
 ];

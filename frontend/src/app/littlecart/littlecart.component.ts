@@ -8,7 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import { NavbarComponent } from '../components/navbar/navbar.component';
-import {MatSelectModule} from '@angular/material/select';
+
 import { _isNumberValue } from '@angular/cdk/coercion';
 
 export enum PaymentType {
@@ -20,22 +20,12 @@ export enum PaymentType {
 
 @Component({
   selector: 'app-littlecart',
-  standalone: true,
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: {displayDefaultIndicatorType: false},
     },
   ],
-  imports: [CommonModule, NavbarComponent,
-    MatStepperModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSelectModule],
   templateUrl: './littlecart.component.html',
   styleUrl: './littlecart.component.scss'
 })

@@ -1,31 +1,34 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import VanillaTilt from "vanilla-tilt";
+import { Component,DoCheck } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'angular-commerce';
+export class AppComponent implements DoCheck {
+  title = 'authentication';
+  isadmin=false;
+  isMenuVisible=false;
+  constructor(private route:Router){
+    let role=sessionStorage.getItem('role');
+    if(role=='admin'){
+      this.isadmin=true;
+    }
+  }
+  ngDoCheck(): void {
+    let currentroute = this.route.url;
+    let role=sessionStorage.getItem('role');
+    if (currentroute == '/login' || currentroute == '/register') {
+      this.isMenuVisible = false
+    } else {
+      this.isMenuVisible = true
+    }
+
+    if (role == 'admin') {
+      this.isadmin = true;
+    }else{
+      this.isadmin = false;
+    }
+  }
 }
-
-
-const tiltElements:HTMLElement | null = document.querySelector(".card");
-
-VanillaTilt.init(tiltElements!, {
-  scale: 1.1,
-  gyroscope: true,
-  speed: 800,
-  perspective: 1000,
-});                 
-
-tiltElements?.addEventListener("tiltChange", (event:any) => {
-  debugger;
-  let angle = parseInt(event.detail.tiltY, 10) + parseInt(event.detail.tiltX,10);
-  tiltElements.style.setProperty("--angle", angle + "deg");
-});

@@ -1,39 +1,40 @@
 // auth.service.ts
-
 import { Injectable } from '@angular/core';
+import { userBase } from '../main';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private isAuthenticated: boolean = false;
-  private userType: string = ''; // 'Client' or 'Admin'
+  constructor(private http:HttpClient) { 
 
-  login(username: string, password: string): boolean {
-    // Lógica de autenticação simplificada para exemplo
-    const storedUser = JSON.parse(userBase.getItem(username));
-
-    if (storedUser && storedUser.password === password) {
-      this.isAuthenticated = true;
-      this.userType = storedUser.type;
-      return true;
-    } else {
-      this.isAuthenticated = false;
-      this.userType = '';
-      return false;
-    }
   }
+  apiurl='http://localhost:8000/api';
 
-  logout(): void {
-    this.isAuthenticated = false;
-    this.userType = '';
+  RegisterUser(inputdata:any){
+    return this.http.post(this.apiurl,inputdata)
   }
-
-  isLoggedIn(): boolean {
-    return this.isAuthenticated;
+  GetUserByLogin(email:string,password:string){
+    return this.http.post(this.apiurl+'/user',{
+      method: "GetUserByLogin",
+      login:email,
+      password:password
+    });
   }
-
-  getUserType(): string {
-    return this.userType;
+  Getall(){
+    return this.http.get(this.apiurl);
+  }
+  updateuser(id:any,inputdata:any){
+    return this.http.put(this.apiurl+'/'+id,inputdata);
+  }
+  getuserrole(){
+    return this.http.get('http://localhost:3000/role');
+  }
+  isloggedin(){
+    return sessionStorage.getItem('username')!=null;
+  }
+  getrole(){
+    return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';
   }
 }

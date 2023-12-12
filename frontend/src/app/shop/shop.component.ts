@@ -8,8 +8,6 @@ import { response } from 'express';
 
 @Component({
   selector: 'app-shop',
-  standalone: true,
-  imports: [CommonModule, NavbarComponent],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
 })

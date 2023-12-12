@@ -94,7 +94,7 @@
                         </div>
                         <mat-form-field>
                             <mat-label>Tipo de pagamento</mat-label>
-                            <mat-select [(ngModel)]="selectedPaymentType" name="status">
+                            <mat-select ([ngModel])="selectedPaymentType" name="status">
                                 <mat-option *ngFor="let status of paymentTypes" [value]="status">{{ status
                                     }}</mat-option>
                             </mat-select>

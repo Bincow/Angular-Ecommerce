@@ -17,11 +17,11 @@
             <h1>Entrar</h1>
             <div style="block-size: 32px;"></div>
             <div>
-                <form class="login-form-password">
+                <form class="login-form-password" [formGroup]="loginform" (ngSubmit)="proceedlogin()">
                     <div>
                         <div class="logins-infos login-form-email">
                             <div class="label-from">
-                                <label for="username">Usuário</label>
+                                <label for="username" formControlName="email">Email</label>
                             </div>
                             <div class="input-wrapper">
                                 <div class="layout-controller">
@@ -40,7 +40,7 @@
                         <div style="block-size: 24px;"></div>
                         <div class="logins-infos login-form-password">
                             <div class="label-from">
-                                <label for="password">Senha</label>
+                                <label for="password" formControlName="password">Senha</label>
                             </div>
                             <div class="input-wrapper">
                                 <div class="layout-controller">
