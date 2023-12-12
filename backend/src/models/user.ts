@@ -1,7 +1,7 @@
 // user.ts
-enum UserType {
+export enum UserType {
     Admin = 0,
-    Client = 1,
+    User = 1,
 }
 
 

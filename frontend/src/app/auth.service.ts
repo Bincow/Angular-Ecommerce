@@ -15,7 +15,7 @@ export class AuthService {
   RegisterUser(inputdata:any){
     return this.http.post(this.apiurl,inputdata)
   }
-  GetUserByLogin(email:string,password:string){
+  getUserByLogin(email:string,password:string){
     return this.http.post(this.apiurl+'/user',{
       method: "GetUserByLogin",
       login:email,
@@ -32,7 +32,7 @@ export class AuthService {
     return this.http.get('http://localhost:3000/role');
   }
   isloggedin(){
-    return sessionStorage.getItem('username')!=null;
+    return sessionStorage.getItem('login')!=null;
   }
   getrole(){
     return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';

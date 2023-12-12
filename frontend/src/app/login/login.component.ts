@@ -6,6 +6,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth.service';
+import { Mapper } from '../mapping/mapper';
+import User, { UserType } from '../../../../backend/src/models/user';
 
 
 @Component({
@@ -28,25 +30,29 @@ export class LoginComponent {
   });
 
   proceedlogin() {
-    console.log(`login: ${this.loginform.value.email} \nSenha: ${this.loginform.value.password}`)
-
     if (this.loginform.valid) {
-      this.service.GetUserByLogin(this.loginform.value.email!,this.loginform.value.password!).subscribe((item: any) => {
-        this.result = item;
-        if (this.result.password === this.loginform.value.password) {
-          if (this.result.isactive) {
-            sessionStorage.setItem('username',this.result.id);
-            sessionStorage.setItem('role',this.result.role);
-            this.router.navigate(['']);
-          } else {
-            this.toastr.error('Please contact Admin', 'InActive User');
+      this.service.getUserByLogin(this.loginform.value.email!, this.loginform.value.password!)
+        .subscribe((response: any) => {
+          try {
+            const mappedResponse = Mapper.MapperUserResponse(response);
+            sessionStorage.setItem('login', mappedResponse.login);
+            sessionStorage.setItem('role', mappedResponse.type.toString());
+
+            if (mappedResponse.type == 0) {
+              this.router.navigate(['/dashboard']);
+            } else if (mappedResponse.type == 1) {
+              this.router.navigate(['/shop']); 
+            } else {
+              this.router.navigate(['/']);
+              this.toastr.error('Tipo de usuário desconhecido');
+            }
+
+          } catch (error:any) {
+            this.toastr.error(error.message || 'Erro desconhecido');
           }
-        } else {
-          this.toastr.error('Invalid credentials');
-        }
-      });
+        });
     } else {
-      this.toastr.warning('Please enter valid data.')
+      this.toastr.warning('Por favor, insira dados válidos.');
     }
   }
 }

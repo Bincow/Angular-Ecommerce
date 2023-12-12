@@ -15,7 +15,22 @@ import { response } from 'express';
 
 export class ShopComponent implements OnInit{
 
-  products:any = [];
+  products:any = [{
+    id:'65716f234f73a2ad083c6ad9', 
+    name:  "Capinha",
+    price:  10,
+    quantity:  2,
+    types:  [0,1],
+    image:  'https://otakuninjas.com/cdn/shop/files/reditachi.webp?v=1694865985'
+  },
+  {
+    id:'657171474f73a2ad083c6ada', 
+    name:  "Capinha 2",
+    price:  10,
+    quantity:  30,
+    types:  [0,1],
+    image:  ''
+  }];
 
   constructor(private apiService: RestService){}
 

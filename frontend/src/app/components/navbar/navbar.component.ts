@@ -31,6 +31,10 @@ export class NavbarComponent implements OnInit{
   }
 
   openCart(){
-    this.router.navigateByUrl('/littlecart')
+    this.router.navigateByUrl('/cart')
+  }
+
+  logOut(this: any): void {
+    this.router.navigateByUrl('/login');
   }
 }

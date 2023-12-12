@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../auth.service';
 
 
 
@@ -45,6 +48,17 @@ const ELEMENT_DATA: Product[] = [
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+  constructor(private service: AuthService,private toastr:ToastrService,private router: Router) {
+   
+    //this.SetAccesspermission();
+
+  }
+
+
   displayedColumns: string[] = ['id', 'name', 'price', 'quantity','types','image','action'];
   dataSource = ELEMENT_DATA;
+
+  logOut(this: any): void {
+    this.router.navigateByUrl('/login');
+  }
 }
