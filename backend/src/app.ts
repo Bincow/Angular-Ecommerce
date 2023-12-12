@@ -1,11 +1,13 @@
 import express from 'express';
 import { config } from "dotenv"
+import cors from 'cors';
 
 import { MongoUserRepository } from './repositories/users/mongo-users';
 import { UsersController } from './controllers/user/usersController';
 import { MongoClient } from './database/mongo';
 import { MongoProductRepository } from './repositories/products/mongo-products';
 import { ProductsController } from './controllers/product/productsController';
+
 
 const main = async () => {
     config();
@@ -19,6 +21,7 @@ const main = async () => {
     const purchaseRoutes = require('./routes/purchaseRoutes');
 
     app.use(express.json())
+    app.use(cors())
     app.use('/api', userRoutes);
     app.use('/api', productRoutes);
     app.use('/api', purchaseRoutes);
