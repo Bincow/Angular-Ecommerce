@@ -6,19 +6,19 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-image">
-                            <img src="{{product.image}}" alt="">
+                            <img [src]="product.image || 'https://media.istockphoto.com/id/1472933890/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?s=612x612&w=0&k=20&c=Rdn-lecwAj8ciQEccm0Ep2RX50FCuUJOaEM8qQjiLL0='" alt="">
                         </div>
                         <div class="card-title">
                             <h3>{{product.name}}</h3>
                         </div>
                         <div class="card-actions">
                             <div class="card-price">
-                                <p>R$ <b>{{product.price}},00</b></p>
+                                <p>R$ <b>{{product.price}}</b></p>
                                 <span>Restam {{product.quantity}}un</span>
                             </div>
                             <div class="card-interactions">
                                 <button class="min" onclick="diminuir()">-</button>
-                                <p id="contador">2</p>
+                                <p id="contador">{{0}}</p>
                                 <button class="sun" onclick="aumentar()">+</button>
                             </div>
                         </div>

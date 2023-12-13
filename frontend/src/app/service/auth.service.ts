@@ -1,7 +1,10 @@
-// auth.service.ts
+import { getApiUrl } from './_config';
+
 import { Injectable } from '@angular/core';
-import { userBase } from '../main';
+import { userBase } from '../../main';
 import { HttpClient } from '@angular/common/http';
+
+const sectionUri = 'user';
 
 @Injectable({
   providedIn: 'root',
@@ -10,23 +13,22 @@ export class AuthService {
   constructor(private http:HttpClient) { 
 
   }
-  apiurl='http://localhost:8000/api';
 
   RegisterUser(inputdata:any){
-    return this.http.post(this.apiurl,inputdata)
+    return this.http.post(getApiUrl(sectionUri),inputdata)
   }
   getUserByLogin(email:string,password:string){
-    return this.http.post(this.apiurl+'/user',{
+    return this.http.post(getApiUrl(sectionUri)+'/user',{
       method: "GetUserByLogin",
       login:email,
       password:password
     });
   }
   Getall(){
-    return this.http.get(this.apiurl);
+    return this.http.get(getApiUrl(sectionUri));
   }
   updateuser(id:any,inputdata:any){
-    return this.http.put(this.apiurl+'/'+id,inputdata);
+    return this.http.put(getApiUrl(sectionUri)+'/'+id,inputdata);
   }
   getuserrole(){
     return this.http.get('http://localhost:3000/role');

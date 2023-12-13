@@ -1,0 +1,26 @@
+<div class="modal-add">
+    <h2 mat-dialog-title class="modal-title">Adicionar Produto</h2>
+    <div mat-dialog-content class="modal-cotent">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="modal-field">
+                <input matInput formControlName="name" placeholder="Nome do produto" required>
+            </mat-form-field>
+            <mat-form-field class="modal-field">
+                <input matInput formControlName="price" placeholder="Preço do produto" type="number" required>
+            </mat-form-field>
+            <mat-form-field class="modal-field">
+                <input matInput formControlName="quantity" placeholder="Quantidade de estoque do produto" type="number" required>
+            </mat-form-field>
+            <mat-form-field class="modal-field">
+                <input matInput formControlName="types" placeholder="Tags do produto" type="text">
+            </mat-form-field>
+            <mat-form-field class="modal-field">
+                <input matInput formControlName="image" placeholder="URL da imagem do produto" type="text">
+            </mat-form-field>
+        </form>
+    </div>
+    <div mat-dialog-actions class="actions">
+        <button class="sucess-btn" mat-raised-button color="primary" [disabled]="!productForm.valid" (click)="onSubmit()">Concluir</button>
+        <button class="false-btn" mat-button color="warn" (click)="onNoClick()">Cancelar</button>
+    </div>
+</div>

@@ -1,64 +1,74 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../service/auth.service';
+import { ProductService } from '../service/product.service';
+import { Mapper } from '../mapping/mapper';
+import { ProductDTO } from '../service/_config';
+import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AddProductModalComponent } from '../components/add-product-modal/add-product-modal.component';
 
 
 
-enum ProductType {
-  Transparent = 0,
-  Filled = 1,
-  Holographic = 2,
-  Anime = 3,
-  Simple = 4,
-}
-
-export interface Product {
-   id: string,
-   name: string,
-   price: number,
-   quantity: number,
-   types: ProductType[],
-   image: string 
-}
-
-const ELEMENT_DATA: Product[] = [
-  {
-    id:'65716f234f73a2ad083c6ad9', 
-    name:  "Capinha",
-    price:  10,
-    quantity:  2,
-    types:  [ProductType.Holographic, ProductType.Anime],
-    image:  'https://otakuninjas.com/cdn/shop/files/reditachi.webp?v=1694865985'
-  },
-  {
-    id:'657171474f73a2ad083c6ada', 
-    name:  "Capinha 2",
-    price:  10,
-    quantity:  30,
-    types:  [0,1],
-    image:  ''
-  }
-];
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
-  constructor(private service: AuthService,private toastr:ToastrService,private router: Router) {
-   
+export class DashboardComponent implements OnInit{
+  displayedColumns: string[] = ['id', 'name', 'price', 'quantity', 'types', 'image', 'action'];
+  dataSource: ProductDTO[] = [];
+  showModal = false;
+
+  constructor(private service: ProductService,private toastr:ToastrService,private router: Router, private dialog: MatDialog) {
     //this.SetAccesspermission();
 
   }
 
+  ngOnInit(): void {
+    this.getAllProducts(); 
+  }
 
-  displayedColumns: string[] = ['id', 'name', 'price', 'quantity','types','image','action'];
-  dataSource = ELEMENT_DATA;
+  getAllProducts(): void {
+    this.service.getAllProducts().subscribe(
+      (response: any) => {
+        try {
+          const mappedResponse = Mapper.MapperProductListResponse(response);
+          this.dataSource = mappedResponse; 
+        } catch (error:any) {
+          this.toastr.error(error.message || 'Erro desconhecido');
+        }
+      },
+      (error) => {
+        this.toastr.error('Erro ao obter produtos');
+      }
+    );
+  }
+
+
+  showAlert(): void {
+    this.toastr.warning('Imagem não disponível.', 'Alerta');
+  }
 
   logOut(this: any): void {
     this.router.navigateByUrl('/login');
+  }
+
+  openModal(): void {
+    this.showModal = true;
+    const dialogRef = this.dialog.open(AddProductModalComponent, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.showModal = false;
+      if (result === 'save') {
+        this.toastr.success('Produto Inserido.');
+        this.getAllProducts()
+      }
+    });
   }
 }

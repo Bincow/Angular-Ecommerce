@@ -14,6 +14,7 @@ import { ShopComponent } from './shop/shop.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from '../material.module';
 import {compileNgModule} from '@angular/compiler'
+import { AddProductModalComponent } from './components/add-product-modal/add-product-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {compileNgModule} from '@angular/compiler'
     ReactiveFormsModule,
     MaterialModule,
     NavbarComponent,
+    AddProductModalComponent,
     HttpClientModule,
     ToastrModule.forRoot()
   ],

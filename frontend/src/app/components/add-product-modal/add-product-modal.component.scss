@@ -1,0 +1,70 @@
+$primary-color: #2196f3;
+$background-color: #fff;
+$border-radius: 5px;
+$fundo: #292929;
+
+.modal-add {
+
+  .modal-title{
+    background-color: $fundo;
+    color: $background-color;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    text-align: center;
+    padding: 15px 0px;
+  }
+
+  .modal-cotent {
+    padding: 20px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+            
+      .modal-field {
+        margin-bottom: 5px;
+
+        input {
+          width: 100%;
+
+        }
+      }
+
+      button {
+        margin-top: 20px;
+    }
+    }
+  }
+
+  .actions {
+    padding: 15px 20px;
+    border-top: 1px solid #ccc;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    gap: 40px;
+    button {
+      margin-left: 15px;
+      cursor: pointer;
+    }
+
+    .sucess-btn{
+        padding: 15px 20px;
+        border-radius: $border-radius;
+        background-color: $primary-color;
+        color: $background-color;
+    }
+    .sucess-btn:disabled{
+        padding: 15px 20px;
+        border-radius: $border-radius;
+        background-color: rgb(204, 204, 204);
+        color: grey;
+        cursor: not-allowed;
+    }
+
+    .false-btn{
+        background: none;
+        color: red;
+    }
+  }
+}

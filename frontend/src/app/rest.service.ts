@@ -12,8 +12,10 @@ export class RestService {
 
   constructor(private http: HttpClient) { }
 
-  public getData(): Observable<any> {
-    return this.http.get<any>(`${this.endpoint}/product`);    
+  public getAllProducts(): Observable<any> {
+    return this.http.post<any>(`${this.endpoint}/product`,{
+      
+    });    
   }
 
   public postData(data: any): Observable<any> {    

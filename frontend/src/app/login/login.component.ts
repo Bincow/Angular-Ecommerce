@@ -5,7 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../service/auth.service';
 import { Mapper } from '../mapping/mapper';
 import User, { UserType } from '../../../../backend/src/models/user';
 

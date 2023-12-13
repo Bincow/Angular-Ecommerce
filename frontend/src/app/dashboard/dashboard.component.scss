@@ -75,4 +75,16 @@ $fundo: #292929;
       cursor: pointer;
     }
   }
+
+  .add-button-container {
+    position: fixed;
+    bottom: 50px; /* Define a distância do bottom */
+    right: 50px; /* Define a distância da direita */
+    z-index: 1000; /* Opcional: Define a ordem de empilhamento */
+
+    button {
+      background-color: $fundo;
+     
+    }
+  }
 }
