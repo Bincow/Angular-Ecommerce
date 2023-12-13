@@ -52,7 +52,6 @@ export class AddProductModalComponent {
         (response: any) => {
           try {
             const mappedResponse = Mapper.MapperProductResponse(response);
-            console.log(mappedResponse); 
           } catch (error:any) {
             this.toastr.error(error.message || 'Erro desconhecido');
           }
@@ -62,7 +61,7 @@ export class AddProductModalComponent {
         }
       );
 
-      this.dialogRef.close(this.productForm.value);
+      this.dialogRef.close('success');
     }
   }
 }

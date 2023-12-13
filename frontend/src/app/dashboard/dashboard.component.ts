@@ -48,6 +48,22 @@ export class DashboardComponent implements OnInit{
     );
   }
 
+  deleteProduct(productId: string): void {
+    if (confirm('Tem certeza que deseja excluir este produto?')) {
+      const dto:ProductDTO = {
+        id: productId,
+      }
+      this.service.deleteProduct(dto).subscribe(
+        () => {
+          this.getAllProducts();
+          this.toastr.success('Produto excluído com sucesso');
+        },
+        (error) => {
+          this.toastr.error('Erro ao excluir produto');
+        }
+      );
+    }
+  }
 
   showAlert(): void {
     this.toastr.warning('Imagem não disponível.', 'Alerta');
@@ -65,7 +81,9 @@ export class DashboardComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(result => {
       this.showModal = false;
-      if (result === 'save') {
+      debugger;
+      console.log(result);
+      if (result === 'success') {
         this.toastr.success('Produto Inserido.');
         this.getAllProducts()
       }
