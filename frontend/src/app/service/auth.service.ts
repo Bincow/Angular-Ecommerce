@@ -18,7 +18,7 @@ export class AuthService {
     return this.http.post(getApiUrl(sectionUri),inputdata)
   }
   getUserByLogin(email:string,password:string){
-    return this.http.post(getApiUrl(sectionUri)+'/user',{
+    return this.http.post(getApiUrl(sectionUri),{
       method: "GetUserByLogin",
       login:email,
       password:password
