@@ -65,6 +65,22 @@ export class DashboardComponent implements OnInit{
     }
   }
 
+  updateProduct(product:any):void{
+    this.showModal = true;
+    const dialogRef = this.dialog.open(AddProductModalComponent, {
+      width: '400px',
+      data: product
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.showModal = false;
+      if (result === 'success') {
+        this.toastr.success('Produto Alterado.');
+        this.getAllProducts()
+      }
+    });
+  };
+
   showAlert(): void {
     this.toastr.warning('Imagem não disponível.', 'Alerta');
   }
@@ -81,8 +97,6 @@ export class DashboardComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(result => {
       this.showModal = false;
-      debugger;
-      console.log(result);
       if (result === 'success') {
         this.toastr.success('Produto Inserido.');
         this.getAllProducts()

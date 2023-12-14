@@ -9,10 +9,8 @@ const router = express.Router();
 router.post("/product", async (req, res) => {
     const productController = new ProductsController(new MongoProductRepository());
     let apiResponse:any;
-    
+    const { method, ...request } = req.body;
     try {
-        const { method, ...request } = req.body;
-
         switch(method){
             case 'GetProducts':
                 apiResponse = await productController.handle();
@@ -44,7 +42,7 @@ router.post("/product", async (req, res) => {
 
     const { body, statusCode } = apiResponse;
 
-    console.log(`body: ${body}, \nstatus: ${statusCode}!`)
+    console.log(`method: ${method}, \nstatus: ${statusCode}!`)
     res.status(statusCode).send(body);
 });
 
