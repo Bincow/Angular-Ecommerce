@@ -11,7 +11,7 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   btnClick(this: HomeComponent): void {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/shop');
   }
 }
 

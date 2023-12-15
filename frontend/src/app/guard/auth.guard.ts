@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       const userType = this.service.getrole(); // Obtém o tipo de usuário armazenado na sessão
       // Verifica se o usuário é do tipo 'User' e redireciona para as páginas permitidas
       if (userType == '1') {
-        const allowedRoutes = ['shop', 'cart']; // Rotas permitidas para o tipo 'User'
+        const allowedRoutes = ['mypurchase', 'cart']; // Rotas permitidas para o tipo 'User'
         const requestedRoute = route.url[0].path; // Obtém a rota que está sendo acessada
         console.warn(allowedRoutes.includes(requestedRoute))
         if (allowedRoutes.includes(requestedRoute)) {

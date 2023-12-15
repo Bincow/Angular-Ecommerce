@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from '../material.module';
 import {compileNgModule} from '@angular/compiler'
 import { AddProductModalComponent } from './components/add-product-modal/add-product-modal.component';
+import { MypurchaseComponent } from './mypurchase/mypurchase.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AddProductModalComponent } from './components/add-product-modal/add-pro
     HomeComponent,
     LittlecartComponent,
     DashboardComponent,
+    MypurchaseComponent
   ],
   imports: [
     BrowserModule,

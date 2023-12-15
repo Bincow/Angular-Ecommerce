@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
-import {MatMenuModule} from '@angular/material/menu';
+import {MatMenu, MatMenuModule, MatMenuPanel} from '@angular/material/menu';
 import { CartService } from '../../cartservice.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../service/auth.service';
 
 
 @Component({
@@ -21,8 +22,13 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit{
   cartItemCount: number = 0;
+  loggedIn: boolean = false;
+  profileLogged: MatMenuPanel<any> | null = null;
+  profileNotLogged: MatMenuPanel<any> | null = null;
 
-  constructor(private cartService: CartService, private router: Router){}
+  constructor(private cartService: CartService, private router: Router, private auth:AuthService){
+    this.isLogged();
+  }
 
   ngOnInit() {
     this.cartService.getCartItems().subscribe(items => {
@@ -33,8 +39,22 @@ export class NavbarComponent implements OnInit{
   openCart(){
     this.router.navigateByUrl('/cart')
   }
+  openMyPurchase(){
+    this.router.navigateByUrl('/mypurchase');
+  }
 
-  logOut(this: any): void {
+  login(): void {
     this.router.navigateByUrl('/login');
   }
+  logOut(this: any): void {
+    sessionStorage.clear();
+    location.reload();
+  }
+  
+
+  isLogged():void{
+    this.loggedIn = this.auth.isloggedin();
+  }
+
+  
 }

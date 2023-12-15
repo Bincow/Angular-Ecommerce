@@ -10,15 +10,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ShopComponent } from './shop/shop.component';
 import { AuthGuard } from './guard/auth.guard';
+import { MypurchaseComponent } from './mypurchase/mypurchase.component';
 
 
 const routes: Routes = [
- {component:LoginComponent,path:'login'},
- {component:HomeComponent,path:'home'},
+ {title:'Login',component:LoginComponent,path:'login'},
+ {title:'Home',component:HomeComponent,path:'home'},
  {path:'', redirectTo:'home', pathMatch: 'full'},
- {component:DashboardComponent,path:'dashboard',canActivate:[AuthGuard]},
- {component:ShopComponent,path:'shop',canActivate:[AuthGuard]},
- {component:LittlecartComponent,path:'cart',canActivate:[AuthGuard]},
+ {title:'DashBoard',component:DashboardComponent,path:'dashboard',canActivate:[AuthGuard]},
+ {title:'Shop',component:ShopComponent,path:'shop'},
+ {title:'Carrinho',component:LittlecartComponent,path:'cart',canActivate:[AuthGuard]},
+ {title:'Minhas Compras',component:MypurchaseComponent,path:'mypurchase',canActivate:[AuthGuard]},
 ];
 
 @NgModule({

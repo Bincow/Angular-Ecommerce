@@ -19,8 +19,7 @@ import User, { UserType } from '../../../../backend/src/models/user';
 export class LoginComponent {
   constructor(private builder: FormBuilder, private toastr: ToastrService, private service: AuthService,
     private router: Router) {
-      sessionStorage.clear();
-
+    
   }
   result: any;
 

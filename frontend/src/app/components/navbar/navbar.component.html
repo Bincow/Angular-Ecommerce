@@ -13,20 +13,30 @@
             <mat-icon class="cart" matBadge="{{ cartItemCount }}" matBadgeColor="warn">shopping_cart</mat-icon>
         </div>
 
-        <div mat-button [matMenuTriggerFor]="profile" class="person-section">
+        <div mat-button [matMenuTriggerFor]="loggedIn ? profileLogged : profileNotLogged" class="person-section">
             <span class="introduction">Olá, jonatas <br> <b style="cursor: pointer">Minha Conta</b></span>
-            <mat-icon class="profile" aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
-            <mat-icon class="mark" aria-hidden="false" aria-label="Example home icon" fontIcon="expand_more"></mat-icon>
-            <mat-menu #profile="matMenu" xPosition="before">
-                <button mat-menu-item>
-                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="inventory"></mat-icon>
-                    <span>Meus Pedidos</span>
-                </button>
-                <button mat-menu-item>
-                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="logout"></mat-icon>
-                    <span  (click)="logOut()">Sair</span>
-                </button>
-            </mat-menu>
+            <mat-icon style="cursor: pointer" class="profile" aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
+            <mat-icon style="cursor: pointer" class="seta" aria-hidden="false" aria-label="Example home icon" fontIcon="expand_more"></mat-icon>
         </div>
+        
+        <mat-menu #profileLogged="matMenu" xPosition="before">
+            <button mat-menu-item (click)="openMyPurchase()">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="inventory"></mat-icon>
+                <span>Meus Pedidos</span>
+            </button>
+            <button mat-menu-item (click)="logOut()">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="logout"></mat-icon>
+                <span >Sair</span>
+            </button>
+        </mat-menu>
+        
+        <mat-menu #profileNotLogged="matMenu" xPosition="before">
+            <button mat-menu-item (click)="login()">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="login"></mat-icon>
+                <span >Entrar</span>
+            </button>
+        </mat-menu>
+       
+        
     </div>
 </nav>
