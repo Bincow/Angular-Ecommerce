@@ -86,7 +86,8 @@ export class DashboardComponent implements OnInit{
   }
 
   logOut(this: any): void {
-    this.router.navigateByUrl('/login');
+    sessionStorage.clear();
+    location.reload();
   }
 
   openModal(): void {

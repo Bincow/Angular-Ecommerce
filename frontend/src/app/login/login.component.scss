@@ -131,7 +131,7 @@ $cor-shadow: #aaa;
                   .show-password {
                     color: $cor-borda;
                   }
-                }
+                } 
               }
             }
           }
@@ -237,4 +237,11 @@ button {
   &:hover {
     background-color: #0056b3;
   }
+
+  &:disabled{
+    padding: 15px 20px;
+    background-color: rgb(204, 204, 204);
+    color: grey;
+    cursor: not-allowed;
+  } 
 }
