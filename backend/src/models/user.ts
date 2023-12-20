@@ -16,7 +16,8 @@ export interface User {
     id: string,
     login: string,
     password: string,
-    type: UserType
+    type: UserType,
+    profileId: string,
 }
 
 export default User;
