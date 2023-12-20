@@ -3,7 +3,7 @@
 
     <div mat-button [matMenuTriggerFor]="profile" class="person-section">
 
-        <span class="introduction">Olá, jonatas <br> <b style="cursor: pointer">Minha Conta</b></span>
+        <span class="introduction">Olá, {{profileName}} <br> <b style="cursor: pointer">Minha Conta</b></span>
         <mat-icon class="profile" aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
         <mat-icon class="mark" aria-hidden="false" aria-label="Example home icon" fontIcon="expand_more"></mat-icon>
         <mat-menu #profile="matMenu" xPosition="before">

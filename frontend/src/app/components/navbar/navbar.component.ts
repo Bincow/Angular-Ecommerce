@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit{
   loggedIn: boolean = false;
   profileLogged: MatMenuPanel<any> | null = null;
   profileNotLogged: MatMenuPanel<any> | null = null;
-
+  profileName: string|null = sessionStorage.getItem('profileName')!.split(' ')[0];;
   constructor(private cartService: CartService, private router: Router, private auth:AuthService){
     this.isLogged();
   }

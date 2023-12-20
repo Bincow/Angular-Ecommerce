@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit{
   displayedColumns: string[] = ['id', 'name', 'price', 'quantity', 'types', 'image', 'action'];
   dataSource: ProductDTO[] = [];
   showModal = false;
-
+  profileName: string|null = sessionStorage.getItem('profileName')!.split(' ')[0];;
   constructor(private service: ProductService,private toastr:ToastrService,private router: Router, private dialog: MatDialog) {
     //this.SetAccesspermission();
 
