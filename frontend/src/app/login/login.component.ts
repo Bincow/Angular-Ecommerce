@@ -67,5 +67,6 @@ proceedlogin() {
   } else {
     this.toastr.warning('Por favor, insira dados válidos.');
   }
+  this.loading = false;
 }
 }

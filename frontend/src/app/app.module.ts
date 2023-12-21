@@ -36,7 +36,10 @@ import { MypurchaseComponent } from './mypurchase/mypurchase.component';
     NavbarComponent,
     AddProductModalComponent,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+      progressBar:true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

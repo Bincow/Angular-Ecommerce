@@ -64,7 +64,7 @@
                     </div>
                     <div style="block-size: 24px;"></div>
 
-                    <button type="submit" [disabled]="loading || loginform.invalid">
+                    <button type="submit" [disabled]="loading">
                         <span *ngIf="!loading">Entrar</span>
                         <span *ngIf="loading">
                           <i class="fas fa-circle-notch fa-spin"></i> Entrando...
