@@ -48,12 +48,12 @@ proceedlogin() {
       .subscribe((response: any) => {
         try {
           const mappedResponse = Mapper.MapperUserResponse(response);
-          sessionStorage.setItem('login', mappedResponse.login);
-          sessionStorage.setItem('role', mappedResponse.type.toString());
-
-          if (mappedResponse.type == 0) {
+          sessionStorage.setItem('login', mappedResponse.user.login);
+          sessionStorage.setItem('role', mappedResponse.user.type.toString());
+          sessionStorage.setItem('profileName', mappedResponse.profile.name);
+          if (mappedResponse.user.type == 0) {
             this.router.navigate(['/dashboard']);
-          } else if (mappedResponse.type == 1) {
+          } else if (mappedResponse.user.type== 1) {
             this.router.navigate(['/shop']);
           } else {
             this.router.navigate(['/']);
