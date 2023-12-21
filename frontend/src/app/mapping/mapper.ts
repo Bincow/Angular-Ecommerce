@@ -23,7 +23,6 @@ import { ProductDTO } from "../service/_config";
 export class Mapper {
 
   static MapperUserResponse(response: any): UserProfile {
-    if (response && response.success) {
       return {
         user: {
           id: response.content.user.id,
@@ -42,9 +41,6 @@ export class Mapper {
           type:response.content.profile.type
         }
       };
-    } else {
-      throw new Error(response.message || 'Erro desconhecido');
-    }
   }
 
   static MapperProductListResponse(response: any): ProductDTO[] {

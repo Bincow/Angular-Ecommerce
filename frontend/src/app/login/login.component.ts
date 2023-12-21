@@ -33,46 +33,63 @@ export class LoginComponent {
   
 loading = false;
 result: any;
+hidePassword: boolean = true;
 
 loginform = this.builder.group({
   email: this.builder.control('', Validators.required),
   password: this.builder.control('', Validators.required)
 });
 
+
+viewPassword() {
+  this.hidePassword = !this.hidePassword;
+}
+
 proceedlogin() {
-  
   if (this.loginform.valid) {
     this.loading = true;
     
     this.service.getUserByLogin(this.loginform.value.email!, this.loginform.value.password!)
-      .subscribe((response: any) => {
-        try {
-          const mappedResponse = Mapper.MapperUserResponse(response);
-          sessionStorage.setItem('login', mappedResponse.user.login);
-          sessionStorage.setItem('role', mappedResponse.user.type.toString());
-          sessionStorage.setItem('profileName', mappedResponse.profile.name);
-          if (mappedResponse.user.type == 0) {
-            this.router.navigate(['/dashboard']);
-            this.toastr.success('Login bem sucedido',undefined, {
-              timeOut: 2000,
-            });
-          } else if (mappedResponse.user.type== 1) {
-            this.router.navigate(['/shop']);
-            this.toastr.success('Login bem sucedido',undefined, {
-              timeOut: 2000,
-            });
+      .subscribe(
+        (response: any) => {
+          if (!response || !response.success) {
+            this.toastr.error(response?.message || 'Tente Novamente mais tarde');
+            this.loading = false; // Coloque o loading dentro deste bloco também
           } else {
-            this.router.navigate(['/']);
-            this.toastr.error('Tipo de usuário desconhecido');
-          }
+            const mappedResponse = Mapper.MapperUserResponse(response);
 
-        } catch (error: any) {
-          this.toastr.error(error.message || 'Erro desconhecido');
+            sessionStorage.setItem('login', mappedResponse.user.login);
+            sessionStorage.setItem('role', mappedResponse.user.type.toString());
+            sessionStorage.setItem('profileName', mappedResponse.profile.name);
+
+            if (mappedResponse.user.type === 0) {
+              this.router.navigate(['/dashboard']);
+            } else if (mappedResponse.user.type === 1) {
+              this.router.navigate(['/shop']);
+            } else {
+              this.router.navigate(['/']);
+            }
+            
+            this.toastr.success('Login bem sucedido', undefined, {
+              timeOut: 2000,
+            });
+          }
+        },
+        (error: any) => {
+          console.log(error);
+          if (!error.error.success && error.status == 400) {
+            this.toastr.error(error.error.message || 'Erro desconhecido');
+          } else {
+            this.toastr.error('Por favor, tente novamente mais tarde');
+          }
+          this.loading = false;
         }
-      });
+      );
   } else {
     this.toastr.warning('Por favor, insira dados válidos.');
   }
-  this.loading = false;
 }
+
+
+
 }

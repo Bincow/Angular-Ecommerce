@@ -3,6 +3,7 @@ import { getApiUrl } from './_config';
 import { Injectable } from '@angular/core';
 import { userBase } from '../../main';
 import { HttpClient } from '@angular/common/http';
+import { timeout } from 'rxjs';
 
 const sectionUri = 'user';
 
@@ -22,7 +23,9 @@ export class AuthService {
       method: "GetUserByLogin",
       login:email,
       password:password
-    });
+    }).pipe(
+      timeout(6000)
+    );
   }
   Getall(){
     return this.http.get(getApiUrl(sectionUri));

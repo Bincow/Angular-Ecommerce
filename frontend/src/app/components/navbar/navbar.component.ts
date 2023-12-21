@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit{
   profileLogged: MatMenuPanel<any> | null = null;
   profileNotLogged: MatMenuPanel<any> | null = null;
   profileName: string|null|undefined = sessionStorage.getItem('profileName')?.split(' ')[0];
-  
+
   constructor(private cartService: CartService, private router: Router, private auth:AuthService){
     this.isLogged();
   }
@@ -37,6 +37,9 @@ export class NavbarComponent implements OnInit{
     });
   }
 
+  openShop(){
+    this.router.navigateByUrl('/shop')
+  }
   openCart(){
     this.router.navigateByUrl('/cart')
   }
