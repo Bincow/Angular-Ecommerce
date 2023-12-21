@@ -14,7 +14,14 @@
         </div>
 
         <div mat-button [matMenuTriggerFor]="loggedIn ? profileLogged : profileNotLogged" class="person-section">
-            <span class="introduction">Olá, {{ profileName }} <br> <b style="cursor: pointer">Minha Conta</b></span>
+            <div *ngIf="loggedIn">
+                <span class="introduction">Olá, {{ profileName }} <br> <b style="cursor: pointer">Minha Conta</b></span>
+            </div>
+            <div *ngIf="!loggedIn">
+                <span class="introduction">
+                    <b style="cursor: pointer">Entre / Registrar</b>
+                </span>
+            </div>
             <mat-icon style="cursor: pointer" class="profile" aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
             <mat-icon style="cursor: pointer" class="seta" aria-hidden="false" aria-label="Example home icon" fontIcon="expand_more"></mat-icon>
         </div>

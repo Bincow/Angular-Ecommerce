@@ -53,8 +53,14 @@ proceedlogin() {
           sessionStorage.setItem('profileName', mappedResponse.profile.name);
           if (mappedResponse.user.type == 0) {
             this.router.navigate(['/dashboard']);
+            this.toastr.success('Login bem sucedido',undefined, {
+              timeOut: 2000,
+            });
           } else if (mappedResponse.user.type== 1) {
             this.router.navigate(['/shop']);
+            this.toastr.success('Login bem sucedido',undefined, {
+              timeOut: 2000,
+            });
           } else {
             this.router.navigate(['/']);
             this.toastr.error('Tipo de usuário desconhecido');

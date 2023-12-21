@@ -39,6 +39,7 @@ import { MypurchaseComponent } from './mypurchase/mypurchase.component';
     ToastrModule.forRoot({
       preventDuplicates: true,
       progressBar:true,
+      closeButton:true,
     })
   ],
   providers: [],
